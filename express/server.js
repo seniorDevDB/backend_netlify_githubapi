@@ -9,6 +9,7 @@ const cors = require('cors');
 
 const router = express.Router();
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/.netlify/functions/server', router);  // path must route to lambda
