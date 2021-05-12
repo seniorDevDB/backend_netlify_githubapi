@@ -20,7 +20,12 @@ const axios = require('axios');
 const base_url = "https://jobs.github.com/positions.json"
 
 router.get('/', (req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/html' });
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+  };
+  res.writeHead(200, headers);
   // res.write('<h1>Hello from okko</h1>');
   // res.end();
   let url = base_url + '?page=' + req.body.pageNumber
