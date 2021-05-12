@@ -19,9 +19,23 @@ const axios = require('axios');
 const base_url = "https://jobs.github.com/positions.json"
 
 router.get('/', (req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/html' });
-  res.write('<h1>Hello from okko</h1>');
-  res.end();
+  // res.writeHead(200, { 'Content-Type': 'text/html' });
+  // res.write('<h1>Hello from okko</h1>');
+  // res.end();
+  let url = base_url + '?page=' + req.body.pageNumber
+  console.log("url", url)
+  axios.get(url).then(result => {
+    res.send(JSON.stringify({
+      code: 'success',
+      data: result.data,
+      message: 'All Jobs'
+    }));
+  }).catch(err => {
+    res.send(JSON.stringify({
+      code: 'error',
+      message: 'Error'
+    }));
+  })
 });
 
 // Create User
