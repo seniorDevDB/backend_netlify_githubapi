@@ -11,7 +11,7 @@ const router = express.Router();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// app.use(cors());
+app.use(cors());
 app.use('/.netlify/functions/server', router);  // path must route to lambda
 // app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 
@@ -20,7 +20,7 @@ const axios = require('axios');
 const base_url = "https://jobs.github.com/positions.json"
 
 router.get('/', (req, res) => {
-  // res.writeHead(200, { 'Content-Type': 'text/html' });
+  res.writeHead(200, { 'Content-Type': 'text/html' });
   // res.write('<h1>Hello from okko</h1>');
   // res.end();
   let url = base_url + '?page=' + req.body.pageNumber
